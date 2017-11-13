@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE	hibernate-mapping PUBLIC
+			"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+			"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="io.sonph.assignment.model.Detail" table="Details">
+		<id name="id" type="int">
+			<column name="Id" not-null="true"/>
+			<generator class="identity" />
+		</id>
+		<property name="cartId" type="int" column="CartId" not-null="true"/>
+		<property name="productId" type="string" column="ProductId" not-null="true"/>
+		<property name="added" type="string" column="Added" not-null="true"/>
+		
+		<many-to-one name="cart" column="CartId" class="io.sonph.assignment.model.Cart"
+												insert="false" update="false" lazy="false" fetch="join">
+		</many-to-one>
+		<many-to-one name="product" column="ProductId" class="io.sonph.assignment.model.Product"
+												insert="false" update="false" lazy="false" fetch="join">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

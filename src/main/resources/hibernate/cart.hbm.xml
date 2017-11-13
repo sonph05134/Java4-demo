@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE	hibernate-mapping PUBLIC
+			"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+			"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="io.sonph.assignment.model.Cart" table="Carts">
+		<id name="id" type="int">
+			<column name="Id" not-null="true"/>
+			<generator class="identity" />
+		</id>
+		<property name="accountId" type="int" column="AccountId" not-null="false"/>
+		<property name="totalProducts" type="string" column="totalProducts" not-null="true"/>
+		<property name="totalPrice" type="string" column="totalPrice" not-null="true"/>
+		
+		<many-to-one name="account" column="AccountId" class="io.sonph.assignment.model.Account"
+												insert="false" update="false" lazy="false" fetch="join">
+		</many-to-one>
+	</class>
+</hibernate-mapping>
